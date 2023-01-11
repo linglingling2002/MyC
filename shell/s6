@@ -1,0 +1,39 @@
+#!/bin/bash
+DIR=$1  
+#if  the string empty
+if [ "$DIR" = " " ] 
+then
+    echo "usage: `basename $0` directory to create" >&2
+    exit 1
+fi
+echo "dir" $DIR
+if [ -d $DIR ]
+then
+    echo "The directory already exist"
+    exit 0
+else
+    echo "The directory does exist"
+    echo -n "Create is now? [Y/N]:"
+    read create
+    if [ "$create" = "y" ] || [ "$create" = "Y" ]
+    then
+        echo "creating now"
+	if [ mkdir $DIR ]
+ 		DIR=" "
+	fi
+        
+	if [ "$DIR" = " " ]
+        then
+		echo "create directory sucess"
+        else
+            echo "create directory error"
+        fi
+    elif [ "$create" = "n" ] || [ "$create" = "N" ]
+	then
+            echo "does not create directory"
+            exit 0
+    else
+        echo "Errors order"
+        exit 1
+    fi
+fi

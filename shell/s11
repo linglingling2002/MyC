@@ -1,0 +1,20 @@
+#!/bin/bash
+if [ "$1" = "" ] || [ "$2" = "" ]
+then
+    echo "Please enter file name"
+    exit 1
+fi
+if [ -e $2 ]
+then
+    echo "The file already exists"
+    until [ ! -f $2 ]
+    do
+        sleep 1
+    done
+fi
+if [ ! `mv $1 $2` ]
+then
+    echo "mv sucessful"
+else
+    echo "mv error"
+fi

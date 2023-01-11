@@ -1,0 +1,8 @@
+#!/bin/bash
+
+counter=0
+for files in *
+do
+    counter=`expr $counter + 1`
+done
+echo "There are $counter files in `pwd` we need to process"
